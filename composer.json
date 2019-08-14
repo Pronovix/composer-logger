@@ -1,0 +1,35 @@
+{
+    "name": "pronovix/composer-logger",
+    "type": "library",
+    "description": "Simple PS3 compliant logger for Composer IOInterface.",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": "^7.1",
+        "psr/log": "^1.0.2"
+    },
+    "require-dev": {
+        "composer/composer": "^1.7.3",
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "vimeo/psalm": "^3.2"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Pronovix\\ComposerLogger\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "analyze": "psalm --config=psalm.xml.dist --show-info=false --stats",
+        "check-style": "php-cs-fixer fix --dry-run",
+        "fix-style": "php-cs-fixer fix"
+    }
+}
