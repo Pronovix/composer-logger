@@ -94,23 +94,23 @@ final class Logger extends AbstractLogger
      */
     private function buildMessage(string $message, array $context): string
     {
-        if (false === strpos($message, '{')) {
-            return $message;
-        }
-
-        $replacements = [];
-        foreach ($context as $key => $val) {
-            if (null === $val || is_scalar($val) || (\is_object($val) && method_exists($val, '__toString'))) {
-                $replacements["{{$key}}"] = $val;
-            } elseif ($val instanceof \DateTimeInterface) {
-                $replacements["{{$key}}"] = $val->format(\DateTime::RFC3339);
-            } elseif (\is_object($val)) {
-                $replacements["{{$key}}"] = '[object ' . \get_class($val) . ']';
-            } else {
-                $replacements["{{$key}}"] = '[' . \gettype($val) . ']';
+        if (false !== strpos($message, '{')) {
+            $replacements = [];
+            foreach ($context as $key => $val) {
+                if (null === $val || is_scalar($val) || (\is_object($val) && method_exists($val, '__toString'))) {
+                    $replacements["{{$key}}"] = $val;
+                } elseif ($val instanceof \DateTimeInterface) {
+                    $replacements["{{$key}}"] = $val->format(\DateTime::RFC3339);
+                } elseif (\is_object($val)) {
+                    $replacements["{{$key}}"] = '[object ' . \get_class($val) . ']';
+                } else {
+                    $replacements["{{$key}}"] = '[' . \gettype($val) . ']';
+                }
             }
+
+            $message = strtr($message, $replacements);
         }
 
-        return $this->name . ': ' . strtr($message, $replacements);
+        return $this->name . ': ' . $message;
     }
 }
