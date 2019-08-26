@@ -2,6 +2,11 @@
     "name": "pronovix/composer-logger",
     "type": "library",
     "description": "Simple PS3 compliant logger for Composer IOInterface.",
+    "keywords": [
+        "Composer",
+        "logger",
+        "utility"
+    ],
     "license": "GPL-2.0-or-later",
     "require": {
         "php": "^7.1",
