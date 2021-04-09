@@ -9,7 +9,7 @@
     ],
     "license": "GPL-2.0-or-later",
     "require": {
-        "php": "^7.2.0",
+        "php": "^7.3.0",
         "psr/log": "^1.0.2"
     },
     "require-dev": {
@@ -18,13 +18,13 @@
     },
     "config": {
         "platform": {
-            "php": "7.2.0"
+            "php": "7.3.0"
         },
         "sort-packages": true
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
     },
     "autoload": {
