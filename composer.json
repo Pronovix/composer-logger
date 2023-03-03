@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "~8.1.6",
-        "psr/log": "^1.0.2"
+        "psr/log": "^1.0.2 || ^3.0"
     },
     "require-dev": {
         "composer/composer": "^1.7.3 || ^2.0",
