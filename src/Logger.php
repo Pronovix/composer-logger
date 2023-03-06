@@ -44,9 +44,6 @@ final class Logger extends AbstractLogger
 
     /**
      * Logger constructor.
-     *
-     * @param string $channel
-     * @param \Composer\IO\IOInterface $io
      */
     public function __construct(string $channel, IOInterface $io)
     {
@@ -55,7 +52,7 @@ final class Logger extends AbstractLogger
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function log($level, $message, array $context = []): void
     {
@@ -66,10 +63,10 @@ final class Logger extends AbstractLogger
             case LogLevel::EMERGENCY:
                 $this->io->writeError(['<error>' . $this->buildMessage($message, $context) . '</error>']);
                 break;
-          case LogLevel::WARNING:
-              $this->io->writeError(['<fg=yellow>' . $this->buildMessage($message, $context) . '</>']);
-            break;
-          case LogLevel::DEBUG:
+            case LogLevel::WARNING:
+                $this->io->writeError(['<fg=yellow>' . $this->buildMessage($message, $context) . '</>']);
+                break;
+            case LogLevel::DEBUG:
                 if ($this->io->isDebug()) {
                     $this->io->write(['<info>' . $this->buildMessage($message, $context) . '</info>']);
                 }
@@ -83,11 +80,6 @@ final class Logger extends AbstractLogger
 
     /**
      * Interpolates context values into the message placeholders and prefixes the message with the plugin's name.
-     *
-     * @param string $message
-     * @param array $context
-     *
-     * @return string
      *
      * @see https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md#12-message
      * @see https://github.com/symfony/console/blob/3.4/Logger/ConsoleLogger.php#L108-L128
